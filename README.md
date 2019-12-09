@@ -1,8 +1,14 @@
 # download-gh-release-asset
 
-GitHub action that downloads asset with given name from the GitHub release that triggered the action.
+GitHub action that downloads asset with given name from a given GitHub release.
+Usefull for downloading test files from the release assets
 
-This action only works on the `release` event.
+## Environment
+Required set secrets.GITHUB_TOKEN to env.GITHUB_TOKEN
+
+## Inputs
+### file
+Required upload file to release asset
 
 ## Usage
 
@@ -17,7 +23,7 @@ jobs:
   asset_fetcher:
     runs-on: ubuntu-latest
     steps:
-    - uses: wyozi/download-gh-release-asset@master
+    - uses: beameio/download-release-asset@master
       with:
         args: release_asset.dat
       env:
@@ -28,3 +34,4 @@ jobs:
 
 - https://gist.github.com/maxim/6e15aa45ba010ab030c4
 - https://github.com/JasonEtco/upload-to-release
+- https://github.com/wyozi/download-gh-release-asset
