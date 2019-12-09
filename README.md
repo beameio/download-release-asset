@@ -21,9 +21,7 @@ Release tag to download the file from, if not give it'll default to the latest r
 Downloads asset named `asset-file-name.txt` from release assets into working directory with the same name.
 
 ```
-name: "Fetch release asset"
-on:
-- release
+name: "Fetch asset"
 
 jobs:
   asset_fetcher:
