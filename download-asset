@@ -23,7 +23,7 @@ fi
 
 # Default Repo if not set == current repo
 if [[ -z "$REPO" ]]; then
-  REPO = ${GITHUB_REPOSITORY}
+  REPO=${GITHUB_REPOSITORY}
 fi
 
 # Default release tag, if not set == latest
