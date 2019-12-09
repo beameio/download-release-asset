@@ -1,4 +1,4 @@
-# download-gh-release-asset
+# download-release-asset
 
 GitHub action that downloads asset with given name from a given repo/release.
 
