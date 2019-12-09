@@ -1,14 +1,20 @@
 # download-gh-release-asset
 
-GitHub action that downloads asset with given name from a given GitHub release.
-Usefull for downloading test files from the release assets
+GitHub action that downloads asset with given name from a given repo/release.
 
 ## Environment
-Required set secrets.GITHUB_TOKEN to env.GITHUB_TOKEN
+Requires setting secrets.GITHUB_TOKEN (on any other custom token) to the env.GITHUB_TOKEN
 
 ## Inputs
 ### file
-Required upload file to release asset
+Required filename to download
+
+### repo
+Repository to download from, if not given, it'll default to the current repository
+Setting to a different repository requires a custom GITHUB_TOKEN to be set.
+
+### release_tag
+Release tag to download the file from, if not give it'll default to the latest release
 
 ## Usage
 
@@ -25,13 +31,14 @@ jobs:
     steps:
     - uses: beameio/download-release-asset@master
       with:
-        args: release_asset.dat
+        file: asset-file-name.txt
+        release_tag: v1
       env:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
 ## Credits
 
+- https://github.com/wyozi/download-gh-release-asset
 - https://gist.github.com/maxim/6e15aa45ba010ab030c4
 - https://github.com/JasonEtco/upload-to-release
-- https://github.com/wyozi/download-gh-release-asset
