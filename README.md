@@ -1,8 +1,8 @@
-# download-gh-release-asset
+# download-release-asset
 
 GitHub action that downloads an asset with a given name from the current release, specific release_tag or even specific repository.
 
-This is particulary usefull as a way to host large files for test setup - https://help.github.com/en/github/managing-large-files/distributing-large-binaries 
+This is particularly useful as a way to host large files for test setup - https://help.github.com/en/github/managing-large-files/distributing-large-binaries
 
 ## Environment
 Requires setting `env.GITHUB_TOKEN` with `secrets.GITHUB_TOKEN` (on any other custom token).
@@ -30,7 +30,7 @@ jobs:
   asset_fetcher:
     runs-on: ubuntu-latest
     steps:
-    - uses: wyozi/download-gh-release-asset@master
+    - uses: beameio/download-release-asset@master
       with:
         args: release_asset.dat
       env:
@@ -45,7 +45,7 @@ jobs:
   asset_fetcher:
     runs-on: ubuntu-latest
     steps:
-    - uses: wyozi/download-gh-release-asset@master
+    - uses: beameio/download-release-asset@master
       with:
         file: asset-file-name.txt
         release_tag: v1
@@ -53,7 +53,7 @@ jobs:
         GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 ```
 
-Download multiple assets from from `v1` release, in repository `otherRepo`, into working directory with the same name, using `CUSTOM_GITHUB_TOKEN` with permissions to that repository
+Download multiple assets from `v1` release, in repository `otherRepo`, into working directory with the same name, using `CUSTOM_GITHUB_TOKEN` with permissions to that repository
 ```
 name: "Run tests"
 on: [push]
@@ -64,7 +64,7 @@ jobs:
         testFile: [test1, test2]
     runs-on: ubuntu-latest
     steps:
-    - uses: wyozi/download-gh-release-asset@master
+    - uses: beameio/download-release-asset@master
       with:
         file: "${{ matrix.testFile }}.zip"
         repository: otherRepo
@@ -79,5 +79,4 @@ jobs:
 
 ## Credits
 
-- https://gist.github.com/maxim/6e15aa45ba010ab030c4
-- https://github.com/JasonEtco/upload-to-release
+Based on `wyozi` work on https://github.com/wyozi/download-gh-release-asset, but unfortunately it seems the repository is not maintained anymore, and https://github.com/wyozi/download-gh-release-asset/pull/2 was opened for some months with no reply until we decided to release the code directly.
